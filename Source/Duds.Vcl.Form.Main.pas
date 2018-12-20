@@ -799,23 +799,26 @@ end;
 procedure TfrmMain.SearchList(VT: TVirtualStringTree; const SearchText: String);
 var
   Node: PVirtualNode;
-  LowerSearchText: String;
   DelphiFile: TDelphiFile;
+  reg: TRegEx;
 begin
   VT.BeginUpdate;
   try
-    LowerSearchText := lowercase(SearchText);
-
+    reg := TRegEx.Create(SearchText, [roIgnoreCase]);
     Node := VT.GetFirst;
-
     while Node <> nil do
     begin
       DelphiFile := FDelphiFileList[GetID(Node)];
 
-      VT.IsVisible[Node] := ((SearchText = '') or
-                            (((pos(LowerSearchText, LowerCase(DelphiFile.UnitInfo.DelphiUnitName)) <> 0)))) and
-                            ((DelphiFile.InSearchPath) or
-                             ((not DelphiFile.InSearchPath) and (actShowUnitsNotInPath.Checked)));
+      VT.IsVisible[Node] := ( (SearchText = '')
+                              or
+                              (reg.Match(DelphiFile.UnitInfo.DelphiUnitName).Index <> 0)
+                            )
+                            and
+                            ( DelphiFile.InSearchPath
+                              or
+                             (not DelphiFile.InSearchPath and actShowUnitsNotInPath.Checked)
+                            );
 
       Node := Node.NextSibling;
     end;
