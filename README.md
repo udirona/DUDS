@@ -8,4 +8,5 @@ Fork of Delphi Unit Dependency Scanner
 
 * VirtualTreeView
 * SynEdit
+* DelphiAST
 

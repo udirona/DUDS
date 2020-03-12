@@ -1,6 +1,11 @@
 program DependencyScanner;
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   Vcl.Forms,
   Duds.Vcl.Form.Main in 'Duds.Vcl.Form.Main.pas' {frmMain},
   Duds.Vcl.Form.FindReplace in 'Duds.Vcl.Form.FindReplace.pas' {frmSearchAndReplace},
@@ -18,7 +23,9 @@ uses
   Duds.Common.Parser.Pascal.Tokeniser in 'Duds.Common.Parser.Pascal.Tokeniser.pas',
   Duds.Vcl.Utils in 'Duds.Vcl.Utils.pas',
   Duds.Common.Delphi in 'Duds.Common.Delphi.pas',
-  Duds.Vcl.VirtualTreeview in 'Duds.Vcl.VirtualTreeview.pas';
+  Duds.Vcl.VirtualTreeview in 'Duds.Vcl.VirtualTreeview.pas',
+  uDelphi2PlantUml in '..\..\DelphiAST\Demo\Delphi2PlantUml\uDelphi2PlantUml.pas',
+  MSXML2_TLB in '..\..\DelphiAST\Demo\Delphi2PlantUml\MSXML2_TLB.pas';
 
 {$R *.res}
 

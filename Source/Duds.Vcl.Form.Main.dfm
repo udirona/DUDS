@@ -468,7 +468,7 @@ object frmMain: TfrmMain
                 Top = 0
                 Width = 540
                 Height = 412
-                ActivePage = tabUsesList
+                ActivePage = TabSheet1
                 Align = alClient
                 TabOrder = 0
                 object tabUsedBy: TTabSheet
@@ -684,6 +684,78 @@ object frmMain: TfrmMain
                     ReadOnly = True
                     OnChange = memListFileChange
                     FontSmoothing = fsmNone
+                  end
+                end
+                object tsPlantUml: TTabSheet
+                  Caption = 'Plantuml'
+                  ImageIndex = 3
+                  object memPlantUml: TSynEdit
+                    AlignWithMargins = True
+                    Left = 0
+                    Top = 3
+                    Width = 529
+                    Height = 376
+                    Margins.Left = 0
+                    Align = alClient
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -13
+                    Font.Name = 'Courier New'
+                    Font.Style = []
+                    TabOrder = 0
+                    CodeFolding.CollapsedLineColor = clGrayText
+                    CodeFolding.FolderBarLinesColor = clGrayText
+                    CodeFolding.ShowCollapsedLine = True
+                    CodeFolding.IndentGuidesColor = clGray
+                    CodeFolding.IndentGuides = True
+                    UseCodeFolding = False
+                    Gutter.AutoSize = True
+                    Gutter.Font.Charset = DEFAULT_CHARSET
+                    Gutter.Font.Color = clWindowText
+                    Gutter.Font.Height = -11
+                    Gutter.Font.Name = 'Courier New'
+                    Gutter.Font.Style = []
+                    Gutter.ShowLineNumbers = True
+                    ReadOnly = True
+                    OnChange = memListFileChange
+                    FontSmoothing = fsmNone
+                  end
+                end
+                object TabSheet1: TTabSheet
+                  Caption = 'XML Parser'
+                  ImageIndex = 4
+                  object memXML: TSynEdit
+                    AlignWithMargins = True
+                    Left = 0
+                    Top = 3
+                    Width = 529
+                    Height = 376
+                    Margins.Left = 0
+                    Align = alClient
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -13
+                    Font.Name = 'Courier New'
+                    Font.Style = []
+                    TabOrder = 0
+                    CodeFolding.CollapsedLineColor = clGrayText
+                    CodeFolding.FolderBarLinesColor = clGrayText
+                    CodeFolding.ShowCollapsedLine = True
+                    CodeFolding.IndentGuidesColor = clGray
+                    CodeFolding.IndentGuides = True
+                    UseCodeFolding = False
+                    Gutter.AutoSize = True
+                    Gutter.Font.Charset = DEFAULT_CHARSET
+                    Gutter.Font.Color = clWindowText
+                    Gutter.Font.Height = -11
+                    Gutter.Font.Name = 'Courier New'
+                    Gutter.Font.Style = []
+                    Gutter.ShowLineNumbers = True
+                    ReadOnly = True
+                    OnChange = memListFileChange
+                    FontSmoothing = fsmNone
+                    ExplicitLeft = 3
+                    ExplicitTop = 6
                   end
                 end
               end
@@ -1047,6 +1119,9 @@ object frmMain: TfrmMain
       Caption = 'Save to GraphML'
       OnExecute = actSaveToGraphMLExecute
     end
+    object actSaveToPlantUml: TAction
+      Caption = 'Save to PlantUml'
+    end
   end
   object popTree: TPopupMenu
     Left = 208
@@ -1098,6 +1173,9 @@ object frmMain: TfrmMain
     end
     object SavetoGephiCSV1: TMenuItem
       Action = actSaveToGephiCSV
+    end
+    object N14: TMenuItem
+      Caption = '-'
     end
   end
   object MainMenu1: TMainMenu
@@ -1251,7 +1329,7 @@ object frmMain: TfrmMain
     Left = 48
     Top = 408
     Bitmap = {
-      494C01010B001800040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010B000D00040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

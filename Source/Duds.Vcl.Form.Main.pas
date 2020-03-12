@@ -175,6 +175,12 @@ type
     vtLog: TVirtualStringTree;
     SearchandReplace2: TMenuItem;
     N13: TMenuItem;
+    N14: TMenuItem;
+    actSaveToPlantUml: TAction;
+    tsPlantUml: TTabSheet;
+    memPlantUml: TSynEdit;
+    TabSheet1: TTabSheet;
+    memXML: TSynEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure vtUnitsGetNodeDataSize(Sender: TBaseVirtualTree;
@@ -342,6 +348,7 @@ type
     procedure UpdateLogEntries;
     procedure ClearLog;
     procedure FixDPI;
+    procedure ShowPlantUmlCode(const AFileName: string);
 
     property Modified: Boolean read FModified write SetModified;
   end;
@@ -352,6 +359,7 @@ var
 implementation
 
 uses
+  uDelphi2PlantUml,
   Duds.Vcl.Form.Rename,
   Duds.Vcl.Form.Settings,
   Duds.Vcl.Form.FindReplace;
@@ -1280,6 +1288,8 @@ begin
     begin
       memListFile.Lines.LoadFromFile(DelphiFile.UnitInfo.Filename);
       memListFile.Modified := FALSE;
+
+      ShowPlantUmlCode(DelphiFile.UnitInfo.Filename);
     end;
 
     SearchUnitsListChildList(vtUsedUnits, edtSearchUsedByList.Text, TRUE);
@@ -2246,6 +2256,20 @@ begin
   begin
     ExportToGraphML(SaveDialog4.Filename)
   end;
+end;
+
+procedure TfrmMain.ShowPlantUmlCode(const AFileName: string);
+var
+  delphi2PlantUml: TDelphi2PlantUml;
+begin
+  delphi2PlantUml := TDelphi2PlantUml.Create(AFilename);
+  try
+    memPlantUml.Lines.Text := delphi2PlantUml.UML;
+    memXML.Lines.Text := delphi2PlantUml.XML;
+  finally
+    delphi2PlantUml.Free;
+  end;
+
 end;
 
 procedure TfrmMain.ExportToGraphML(const Filename: String);
